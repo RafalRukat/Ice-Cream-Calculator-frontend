@@ -27,7 +27,7 @@ const [ingredientsList, setIngredientsList] = useState(ingredientsTable)
 
     useEffect(handleTotalMass, [ingredientsList])
 
-    useEffect(() => {console.log(`Masa całkowita produktu to ${totalMass}`)}, [totalMass])
+    useEffect(() => {console.log(`Masa całkowita produktu to ${totalMass}`)}, [totalMass]);
 
 
     return (
