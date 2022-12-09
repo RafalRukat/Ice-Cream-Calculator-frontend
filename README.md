@@ -5,6 +5,10 @@
 
 Aplikacja ułatwia produkcję lodów domowej roboty. Umożliwia kontrolowanie zawartości cukru i tłuszczu podczas dodawania poszczególnych składników.
 
+
+### Demo:
+
+
 ### Już wkrótce
 
 Niedługo wprowadzę możliwość dodawania własnych składników, wraz z ich właściwościami. Dodam też instrukcję po angielsku.
