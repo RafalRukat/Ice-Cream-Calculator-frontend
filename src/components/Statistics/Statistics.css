@@ -1,0 +1,10 @@
+.Statistics {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    width: 50%;
+    height: 100vh;
+    padding: 30% 0;
+}

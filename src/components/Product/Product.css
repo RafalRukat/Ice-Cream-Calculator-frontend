@@ -1,0 +1,9 @@
+.Product {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    width: 50%;
+    padding: 5% 2%
+}
