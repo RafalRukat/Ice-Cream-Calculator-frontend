@@ -7,7 +7,7 @@ Aplikacja ułatwia produkcję lodów domowej roboty. Umożliwia kontrolowanie za
 
 
 ### Demo:
-
+https://rafalrukat.github.io/Ice-Cream-Calculator-React-version/
 
 ### Już wkrótce
 
