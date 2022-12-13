@@ -21,9 +21,19 @@
 .Ingredient__value {
     color: white;
     margin-top: 1vh;
-    max-width: 25%;
+    max-width: 40%;
     background-color: darkgoldenrod;
     text-align: center;
-    padding: 1%;
     border: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type=number] {
+    -moz-appearance:textfield; /* Firefox */
 }
