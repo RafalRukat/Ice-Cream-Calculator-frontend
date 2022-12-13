@@ -1,9 +1,9 @@
 .App {
   display: flex;
-  position: relative;
   min-height: 100vh;
-  align-items: flex-start;
+  align-items: stretch;
   font-family: 'Mohave', sans-serif;
   color: white;
   background-color: black;
+  flex-grow: 1;
 }

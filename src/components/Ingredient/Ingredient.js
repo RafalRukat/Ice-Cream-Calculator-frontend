@@ -8,7 +8,7 @@ export const Ingredient = props => {
 
     const handleMyValue = (e) => {
         e.preventDefault();
-    setValue(e.target.value);
+    setValue(Number(e.target.value));
     }
 
     const changeEmptyBracketToZero = (e) => {
@@ -20,12 +20,12 @@ export const Ingredient = props => {
         if (e.target.value === "0") {e.target.value = ""};
     }
 
-useEffect(() => {props.changeIngredientMass(props.index, Number(value))},[value])
+useEffect(() => {props.changeIngredientMass(props.index, value)},[value])
 
     return (
         <div className="Ingredient">
             <span className="Ingredient__name">{props.name}</span>
-            <span>{value}</span>
+            {/*<span>{value}</span>*/}
             <input
                 className="Ingredient__value"
                 type="number" value={value}

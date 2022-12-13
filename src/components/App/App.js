@@ -13,9 +13,10 @@ const [ingredientsList, setIngredientsList] = useState(ingredientsTable)
   const [sugarPercent, setSugarPercent] = useState(0);
 
     const handleTotalMass = () => {
-        let number = 0;
-        ingredientsList.forEach((ingredient) => number += ingredient.mass);
-        setTotalMass(number);
+        let massOfEachIngredient = [];
+        ingredientsList.forEach((ingredient) =>  massOfEachIngredient.push(ingredient.mass));
+        const totalMass = massOfEachIngredient.reduce((prev, curr) => {return prev + curr})
+        setTotalMass(totalMass);
     }
 
     const changeIngredientMass = (index, newMass) => {

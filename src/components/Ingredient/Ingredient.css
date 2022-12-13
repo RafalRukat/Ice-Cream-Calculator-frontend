@@ -13,7 +13,7 @@
 
 .Ingredient__name {
     text-align: center;
-    font-size: 14px;
+    font-size: 10px;
     color: white;
     text-transform: uppercase;
 }
@@ -25,4 +25,5 @@
     background-color: darkgoldenrod;
     text-align: center;
     padding: 1%;
+    border: none;
 }
