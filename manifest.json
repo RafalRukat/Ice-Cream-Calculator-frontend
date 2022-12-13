@@ -1,0 +1,10 @@
+{
+  "short_name": "Ice Cream Calculator",
+  "name": "Ice Cream Calculator - React version",
+  "icons": [
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
