@@ -13,28 +13,38 @@ const [ingredientsList, setIngredientsList] = useState(ingredientsTable)
   const [sugarPercent, setSugarPercent] = useState(0);
 
     const handleTotalMass = () => {
-        let massOfEachIngredient = [];
-        ingredientsList.forEach((ingredient) =>  massOfEachIngredient.push(ingredient.mass));
-        const totalMass = massOfEachIngredient.reduce((prev, curr) => {return prev + curr})
-        setTotalMass(totalMass);
-    }
+        let massOfAll = [];
+        let fatOfAll = [];
+        let sugarOfAll = [];
+        ingredientsList.forEach((ingredient) =>  {
+            massOfAll.push(ingredient.mass);
+            fatOfAll.push(ingredient.fat);
+            sugarOfAll.push(ingredient.sugar);
+        });
+        const totalMass = massOfAll.reduce((prev, curr) => {return prev + curr});
+        const totalFat = fatOfAll.reduce((prev, curr) => {return prev + curr});
+        const totalSugar = sugarOfAll.reduce((prev, curr) => {return prev + curr});
 
-    const changeIngredientMass = (index, newMass) => {
+        setTotalMass(totalMass);
+        if (totalMass){
+            setFatPercent((totalFat * 100 / totalMass).toFixed(2));
+            setSugarPercent((totalSugar * 100 / totalMass).toFixed(2));
+        };
+    }
+    const changeIngredientMass = (index, mass, fat, sugar) => {
         const newTable = [...ingredientsList]
-        newTable[index].mass = newMass;
+        newTable[index].mass = mass;
+        newTable[index].fat = fat;
+        newTable[index].sugar = sugar;
         setIngredientsList(newTable);
-        console.log(`nowa tablica to ${newTable}`)
     };
 
-    useEffect(handleTotalMass, [ingredientsList])
-
-    useEffect(() => {console.log(`Masa całkowita produktu to ${totalMass}`)}, [totalMass]);
-
+    useEffect(handleTotalMass, [ingredientsList]);
 
     return (
         <div className="App">
             <Product ingredientsList={ingredientsList} changeIngredientMass={changeIngredientMass} />
-            <Statistics totalMass={totalMass}/>
+            <Statistics totalMass={totalMass} fatPercent={fatPercent} sugarPercent={sugarPercent}/>
         </div>
 )
 };
