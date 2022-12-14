@@ -4,5 +4,8 @@
     align-items: center;
     margin: 30px 0;
     color: white;
+}
 
+.Substance__name, .Substance__value {
+    font-size: calc(1.4 * var(--common-font-size));
 }

@@ -7,3 +7,13 @@
     width: 50%;
     padding: 5% 2%
 }
+
+@media (orientation: landscape){
+    .Product {
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 60%;
+
+
+    }
+}

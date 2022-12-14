@@ -5,15 +5,15 @@
     justify-content: center;
     background-color: darkgoldenrod;
     border-radius: 50%;
-    width: 30vw;
-    height: 30vw;
-    margin-top: 2vh;
+    width: 15vw;
+    height: 15vw;
+    margin: 2vh 20px 0 0;
     overflow-x: hidden;
 }
 
 .Ingredient__name {
     text-align: center;
-    font-size: 10px;
+    font-size: var(--common-font-size);
     color: white;
     text-transform: uppercase;
 }
@@ -23,17 +23,42 @@
     margin-top: 1vh;
     max-width: 40%;
     background-color: darkgoldenrod;
-    text-align: center;
     border: none;
+    text-align: center;
+    font-size:var(--common-font-size);
 }
 
+/*remove arrows from the input*/
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-    /* display: none; <- Crashes Chrome on hover */
     -webkit-appearance: none;
-    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+    margin: 0;
+}
+input[type=number] {
+    -moz-appearance:textfield;
 }
 
-input[type=number] {
-    -moz-appearance:textfield; /* Firefox */
+@media (orientation: landscape){
+.Ingredient {
+    width: 20vw;
+    height: 20vw;
+    /*--common-font-size: 15px;*/
+}
+}
+
+@media (orientation: landscape) and (min-width: 1100px){
+    .Ingredient {
+        width: 15vw;
+        height: 15vw;
+        /*--common-font-size: 17px;*/
+
+    }
+}
+
+@media (orientation: portrait){
+    .Ingredient {
+        /*--common-font-size: 15px;*/
+        width: 30vw;
+        height: 30vw;
+    }
 }
