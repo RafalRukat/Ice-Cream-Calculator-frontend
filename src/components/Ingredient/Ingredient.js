@@ -10,16 +10,17 @@ export const Ingredient = props => {
 
 
     const handleMyValue = (e) => {
-        e.preventDefault();
-        const givenValue = Number(e.target.value);
-         setValue(givenValue);
-         setFat(givenValue * (props.fatPercentage / 100));
-         setSugar(givenValue * (props.sugarPercentage / 100));
-    }
+            const givenValue = Number(e.target.value);
+                if (givenValue < 0){setValue(0)} else {
+                    setValue(givenValue)}
+                    setFat(givenValue * (props.fatPercentage / 100));
+                    setSugar(givenValue * (props.sugarPercentage / 100));
+
+    };
 
     const changeEmptyBracketToZero = (e) => {
-       if (e.target.value === "") {e.target.value = 0};
-        }
+        if (e.target.value === "") {e.target.value = 0};
+    }
 
 
     const resetValueIfZero = (e) => {
@@ -31,13 +32,13 @@ useEffect(() => {props.changeIngredientMass(props.index, value, fat, sugar)},[va
     return (
         <div className="Ingredient">
             <span className="Ingredient__name">{props.name}</span>
-            {/*<span>{value}</span>*/}
             <input
                 className="Ingredient__value"
                 type="number" value={value}
                 onChange={handleMyValue}
                 onClick={resetValueIfZero}
-                onBlur={changeEmptyBracketToZero}>
+                onBlur={changeEmptyBracketToZero}
+            >
             </input>
         </div>
     )
