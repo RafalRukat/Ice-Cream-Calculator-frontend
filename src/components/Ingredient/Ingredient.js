@@ -15,17 +15,15 @@ export const Ingredient = props => {
                     setValue(givenValue)}
                     setFat(givenValue * (props.fatPercentage / 100));
                     setSugar(givenValue * (props.sugarPercentage / 100));
-
     };
 
     const changeEmptyBracketToZero = (e) => {
         if (e.target.value === "") {e.target.value = 0};
-    }
-
+    };
 
     const resetValueIfZero = (e) => {
         if (e.target.value === "0") {e.target.value = ""};
-    }
+    };
 
 useEffect(() => {props.changeIngredientMass(props.index, value, fat, sugar)},[value])
 
@@ -37,6 +35,7 @@ useEffect(() => {props.changeIngredientMass(props.index, value, fat, sugar)},[va
                 type="number" value={value}
                 onChange={handleMyValue}
                 onClick={resetValueIfZero}
+                onKeyUp={resetValueIfZero}
                 onBlur={changeEmptyBracketToZero}
             >
             </input>

@@ -4,6 +4,8 @@ import {Statistics} from '../Statistics/Statistics'
 import {ingredientsTable} from "../../data/ingredientsList";
 
 import './App.css';
+import {LogPanel} from "../LogPanel/LogPanel";
+import {setSelectionRange} from "@testing-library/user-event/dist/utils";
 
 export const App = () => {
 
@@ -29,6 +31,9 @@ const [ingredientsList, setIngredientsList] = useState(ingredientsTable)
         if (totalMass){
             setFatPercent((totalFat * 100 / totalMass).toFixed(2));
             setSugarPercent((totalSugar * 100 / totalMass).toFixed(2));
+        } else {
+            setFatPercent(0);
+            setSugarPercent(0);
         };
     }
     const changeIngredientMass = (index, mass, fat, sugar) => {
@@ -45,6 +50,7 @@ const [ingredientsList, setIngredientsList] = useState(ingredientsTable)
         <div className="App">
             <Product ingredientsList={ingredientsList} changeIngredientMass={changeIngredientMass} />
             <Statistics totalMass={totalMass} fatPercent={fatPercent} sugarPercent={sugarPercent}/>
+            {/*<LogPanel/>*/}
         </div>
 )
 };
