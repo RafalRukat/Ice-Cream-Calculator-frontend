@@ -1,0 +1,37 @@
+.Log-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 20px;
+}
+
+.Log-panel__label {
+    margin-right: 4px;
+}
+
+.Log-panel__input {
+    margin-right: 8px;
+}
+
+.Log-panel__button {
+    padding: 10px 8px;
+    background-color: darkgoldenrod;
+    color: white;
+    text-transform: uppercase;
+    font-family: 'Mohave', sans-serif;
+    cursor: pointer;
+}
+
+.Log-panel__confirmation, .Log-panel__confirmation--invalid {
+    position: fixed;
+    top: 2%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: large;
+    font-weight: bolder;
+    color: darkgreen;
+}
+
+.Log-panel__confirmation--invalid {
+color: red;
+}
