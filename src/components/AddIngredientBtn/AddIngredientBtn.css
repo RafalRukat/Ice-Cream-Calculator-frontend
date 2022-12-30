@@ -1,0 +1,50 @@
+.Ingredient__add {
+    cursor: pointer;
+}
+
+.Ingredient__new-name {
+    max-width: 80%;
+    text-transform: uppercase;
+    font-family: 'Mohave', sans-serif;
+}
+
+.NewIngredientPropsTable {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    padding: 100px;
+    background-color: #000d;
+    border-radius: 50px;
+}
+
+.NewIngredientPropsTable__label {
+    margin-top: 20px;
+}
+
+.NewIngredientPropsTable__input {
+    flex-grow: 1;
+    line-height: 1.5;
+    text-align: center;
+;
+}
+
+.NewIngredientPropsTable__btn {
+    margin: 40px;
+    padding: 20px;
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    cursor: pointer;
+    transition: .3s;
+    flex-grow: 1;
+    text-transform: uppercase;
+
+}
+
+.NewIngredientPropsTable__btn:hover {
+    background-color: #fff;
+    color: black;
+}

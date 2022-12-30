@@ -44,11 +44,21 @@ const [ingredientsList, setIngredientsList] = useState(ingredientsTable)
         setIngredientsList(newTable);
     };
 
+    const addIngredient = (newIngredientName, fatPercent, sugarPercent) => {
+
+        const newIngredient = {
+            name: newIngredientName,
+            fatPercentage: fatPercent,
+            sugarPercentage: sugarPercent,
+        };
+        setIngredientsList([...ingredientsList, newIngredient]);
+    }
+
     useEffect(handleTotalMass, [ingredientsList]);
 
     return (
         <div className="App">
-            <Product ingredientsList={ingredientsList} changeIngredientMass={changeIngredientMass} />
+            <Product ingredientsList={ingredientsList} changeIngredientMass={changeIngredientMass} addIngredient={addIngredient} />
             <Statistics totalMass={totalMass} fatPercent={fatPercent} sugarPercent={sugarPercent}/>
             {/*<LogPanel/>*/}
         </div>

@@ -1,9 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import {Ingredient} from "../Ingredient/Ingredient";
+import {AddIngredientBtn} from "../AddIngredientBtn/AddIngredientBtn";
+import {NewIngredientPropsTable} from "../AddIngredientBtn/NewIngredientPropsTable";
 
 import './Product.css'
 
 export const Product = props => {
+
         return (
             <section className="Product">
                 {props.ingredientsList.map((ingredient, index) => {
@@ -16,6 +19,7 @@ export const Product = props => {
                         mass={ingredient.mass}
                         changeIngredientMass = {props.changeIngredientMass}
                     />})}
+                <AddIngredientBtn addIngredient={props.addIngredient}/>
             </section>
         )
     };
