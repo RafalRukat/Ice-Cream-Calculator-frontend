@@ -1,7 +1,13 @@
-import React, {useState} from "react";
+import React, {ChangeEvent, useState} from "react";
 import './AddIngredientBtn.css'
 
-export const NewIngredientPropsTable = props => {
+interface Props {
+    addIngredient(name: string, fatPercent: number, sugarPercent: number): void;
+    handlePanel(): void;
+    newIngredientPanel: boolean;
+}
+
+export const NewIngredientPropsTable =   (props: Props) => {
 
     const [name, setName] = useState("");
     const [fatPercent, setFatPercent] = useState(0);
@@ -17,9 +23,9 @@ export const NewIngredientPropsTable = props => {
         setSugarPercent(Number(e.target.value));
     }
 
-    const saveNewIngredient = (event) => {
-        event.preventDefault();
-        console.log(event.defaultPrevented);
+    const saveNewIngredient = (e) => {
+        e.preventDefault();
+        console.log(e.defaultPrevented);
 
         props.addIngredient(name, fatPercent, sugarPercent);
         props.handlePanel();

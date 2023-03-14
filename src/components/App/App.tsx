@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Product} from '../Product/Product'
 import {Statistics} from '../Statistics/Statistics'
-import {ingredientsTable} from "../../data/ingredientsList";
+import {ingredientsTable} from "../../data/ingredientsTable";
 
 import './App.css';
 import {LogPanel} from "../LogPanel/LogPanel";
@@ -29,14 +29,14 @@ const [ingredientsList, setIngredientsList] = useState(ingredientsTable)
 
         setTotalMass(totalMass);
         if (totalMass){
-            setFatPercent((totalFat * 100 / totalMass).toFixed(2));
-            setSugarPercent((totalSugar * 100 / totalMass).toFixed(2));
+            setFatPercent(Number((totalFat * 100 / totalMass).toFixed(2)));
+            setSugarPercent(Number((totalSugar * 100 / totalMass).toFixed(2)));
         } else {
             setFatPercent(0);
             setSugarPercent(0);
         };
     }
-    const changeIngredientMass = (index, mass, fat, sugar) => {
+    const changeIngredientMass = (index: number, mass: number, fat: number, sugar: number) => {
         const newTable = [...ingredientsList]
         newTable[index].mass = mass;
         newTable[index].fat = fat;
@@ -45,11 +45,13 @@ const [ingredientsList, setIngredientsList] = useState(ingredientsTable)
     };
 
     const addIngredient = (newIngredientName, fatPercent, sugarPercent) => {
-
         const newIngredient = {
             name: newIngredientName,
             fatPercentage: fatPercent,
             sugarPercentage: sugarPercent,
+            fat: 0,
+            sugar: 0,
+            mass: 0,
         };
         setIngredientsList([...ingredientsList, newIngredient]);
     }
