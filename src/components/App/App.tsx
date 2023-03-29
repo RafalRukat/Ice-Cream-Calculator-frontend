@@ -1,48 +1,43 @@
 import React, {useEffect, useState} from 'react';
 import {Product} from '../Product/Product'
 import {Statistics} from '../Statistics/Statistics'
-import {ingredientsTable} from "../../data/ingredientsTable";
+import {defaultIngredientsList} from "../../data/defaultIngredientsList";
 
 import './App.css';
-import {LogPanel} from "../LogPanel/LogPanel";
-import {setSelectionRange} from "@testing-library/user-event/dist/utils";
 
 export const App = () => {
 
-const [ingredientsList, setIngredientsList] = useState(ingredientsTable)
-  const [totalMass, setTotalMass] = useState(0);
-  const [fatPercent,setFatPercent] = useState(0);
-  const [sugarPercent, setSugarPercent] = useState(0);
+    const defaultMassOfEach = new Map();
+    const defaultFatOfEach = new Map();
+    const defaultSugarOfEach = new Map();
 
-    const handleTotalMass = () => {
-        let massOfAll = [];
-        let fatOfAll = [];
-        let sugarOfAll = [];
-        ingredientsList.forEach((ingredient) =>  {
-            massOfAll.push(ingredient.mass);
-            fatOfAll.push(ingredient.fat);
-            sugarOfAll.push(ingredient.sugar);
-        });
-        const totalMass = massOfAll.reduce((prev, curr) => {return prev + curr});
-        const totalFat = fatOfAll.reduce((prev, curr) => {return prev + curr});
-        const totalSugar = sugarOfAll.reduce((prev, curr) => {return prev + curr});
+    defaultIngredientsList.map(({name, mass, fat, sugar}) => {
+        defaultMassOfEach.set(name, mass);
+        defaultFatOfEach.set(name, fat);
+        defaultSugarOfEach.set(name, sugar);
+    });
 
-        setTotalMass(totalMass);
-        if (totalMass){
-            setFatPercent(Number((totalFat * 100 / totalMass).toFixed(2)));
-            setSugarPercent(Number((totalSugar * 100 / totalMass).toFixed(2)));
-        } else {
-            setFatPercent(0);
-            setSugarPercent(0);
-        };
+    const [totalMass, setTotalMass] = useState(0);
+    const [totalFat, setTotalFat] = useState(0);
+    const [totalSugar, setTotalSugar] = useState(0)
+    const [ingredientsList, setIngredientsList] = useState(defaultIngredientsList);
+    const [massOfEach, setMassOfEach] = useState(defaultMassOfEach);
+    const [fatOfEach, setFatOfEach] = useState(defaultFatOfEach);
+    const [sugarOfEach, setSugarOfEach] = useState(defaultSugarOfEach);
+
+    useEffect(()=> {
+        setTotalMass([...massOfEach.values()].reduce((prev, curr) => prev + curr, 0));
+        setTotalFat([...fatOfEach.values()].reduce((prev, curr) => prev + curr, 0));
+        setTotalSugar([...sugarOfEach.values()].reduce((prev, curr) => prev + curr, 0));
+        console.log(totalMass, massOfEach);
+    }, [massOfEach]);
+
+    const handleMaps = (name: string, mass: number, fat: number, sugar:number) => {
+        setMassOfEach(prevMap => new Map(prevMap).set(name, mass));
+        setFatOfEach(prevMap => new Map(prevMap).set(name, fat));
+        setSugarOfEach(prevMap => new Map(prevMap).set(name, sugar));
+        //    todo w drugiej kolejności pomyśl, co zrobić, żeby obsługiwać tłuszcz i cukier tylko wtedy, gdy się zmieniają
     }
-    const changeIngredientMass = (index: number, mass: number, fat: number, sugar: number) => {
-        const newTable = [...ingredientsList]
-        newTable[index].mass = mass;
-        newTable[index].fat = fat;
-        newTable[index].sugar = sugar;
-        setIngredientsList(newTable);
-    };
 
     const addIngredient = (newIngredientName, fatPercent, sugarPercent) => {
         const newIngredient = {
@@ -56,13 +51,10 @@ const [ingredientsList, setIngredientsList] = useState(ingredientsTable)
         setIngredientsList([...ingredientsList, newIngredient]);
     }
 
-    useEffect(handleTotalMass, [ingredientsList]);
-
     return (
         <div className="App">
-            <Product ingredientsList={ingredientsList} changeIngredientMass={changeIngredientMass} addIngredient={addIngredient} />
-            <Statistics totalMass={totalMass} fatPercent={fatPercent} sugarPercent={sugarPercent}/>
-            {/*<LogPanel/>*/}
+            <Product handleMaps={handleMaps} ingredientsList={ingredientsList} addIngredient={addIngredient} />
+            <Statistics totalMass={totalMass} massOfEach={massOfEach} totalMassNew={totalMass} newFatPercent={!totalFat ? 0 : Math.floor(totalFat / 100 * totalMass)} newSugarPercent={!totalSugar ? 0 : Math.round(totalSugar / 100 * totalMass)}/>
         </div>
 )
 };

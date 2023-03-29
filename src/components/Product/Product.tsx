@@ -17,7 +17,7 @@ export const Product = props => {
                         fatPercentage={ingredient.fatPercentage}
                         sugarPercentage={ingredient.sugarPercentage}
                         mass={ingredient.mass}
-                        changeIngredientMass = {props.changeIngredientMass}
+                        handleMaps = {props.handleMaps}
                     />})}
                 <AddIngredientBtn addIngredient={props.addIngredient}/>
             </section>

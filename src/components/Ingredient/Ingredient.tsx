@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {ChangeEvent, useEffect, useState} from "react";
 
 import './Ingredient.css'
 
@@ -11,7 +11,7 @@ export const Ingredient = props => {
 
     const handleMyValue = (e) => {
             const givenValue = Number(e.target.value);
-                if (givenValue < 0){setValue(0)} else {
+                if (givenValue <= 0){setValue(0)} else {
                     setValue(givenValue)}
                     setFat(givenValue * (props.fatPercentage / 100));
                     setSugar(givenValue * (props.sugarPercentage / 100));
@@ -25,14 +25,18 @@ export const Ingredient = props => {
         if (e.target.value === "0") {e.target.value = ""};
     };
 
-useEffect(() => {props.changeIngredientMass(props.index, value, fat, sugar)},[value])
+useEffect(() => {
+    props.handleMaps(props.name, value, fat, sugar);
+    },[value]);
+
 
     return (
         <div className="Ingredient">
             <span className="Ingredient__name">{props.name}</span>
             <input
                 className="Ingredient__value"
-                type="number" value={value}
+                type="number"
+                value={value}
                 onChange={handleMyValue}
                 onClick={resetValueIfZero}
                 onKeyUp={resetValueIfZero}

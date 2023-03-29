@@ -1,6 +1,6 @@
 import {IngredientInterface} from "../types/IngredientInterface";
 
-export const ingredientsTable: IngredientInterface[]  = [
+export const defaultIngredientsList: IngredientInterface[]  = [
     {name: "Mleko 3,2%", fatPercentage: 3.2, sugarPercentage: 0, sugar: 0, fat: 0, mass: 0,},
     {name: "Śmietana 30%", fatPercentage: 30, sugarPercentage: 0, sugar: 0, fat: 0, mass: 0,},
     {name: "Śmietana 36%", fatPercentage: 36, sugarPercentage: 0, sugar: 0, fat: 0, mass: 0,},
