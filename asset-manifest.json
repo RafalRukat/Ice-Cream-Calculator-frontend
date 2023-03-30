@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/Ice-Cream-Calculator-frontend/static/css/main.5f9afa23.css",
+    "main.js": "/Ice-Cream-Calculator-frontend/static/js/main.0cb02577.js",
+    "static/media/background-image-ice-cream.jpg": "/Ice-Cream-Calculator-frontend/static/media/background-image-ice-cream.9407c2a543fa3eb00891.jpg",
+    "index.html": "/Ice-Cream-Calculator-frontend/index.html",
+    "main.5f9afa23.css.map": "/Ice-Cream-Calculator-frontend/static/css/main.5f9afa23.css.map",
+    "main.0cb02577.js.map": "/Ice-Cream-Calculator-frontend/static/js/main.0cb02577.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5f9afa23.css",
+    "static/js/main.0cb02577.js"
+  ]
+}
